@@ -19,7 +19,7 @@ const SortButton = ({ onSort }: ISortButtonProps) => {
     return (
         <div
             onClick={onSortClick}
-            className="h-10 cursor-pointer duration-500 active:bg-opacity-90 hover:bg-azure hover:bg-opacity-30 w-[100px] flex bg-white justify-center rounded-md items-center shadow-lg border">
+            className="h-10 cursor-pointer duration-500 active:bg-opacity-90  hover:bg-opacity-30 w-[100px] flex bg-white justify-center rounded-md items-center shadow-lg border">
             Sort
             <img
                 src={images.arrow.default}

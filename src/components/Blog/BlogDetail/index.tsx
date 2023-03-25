@@ -18,7 +18,7 @@ const BlogDetail = () => {
     }, []);
     return (
         <div className="container mx-auto">
-            <span className="mt-10 bg-black w-[6%] rounded-md p-2 text-white flex items-center justify-center">
+            <span className="mt-10 bg-black w-[20%] lg:w-[6%] rounded-md p-2 text-white flex items-center justify-center">
                 <Link to={ROUTERS.HOME}>Back</Link>
             </span>
             <div className="flex flex-col lg:flex-row gap-10">
