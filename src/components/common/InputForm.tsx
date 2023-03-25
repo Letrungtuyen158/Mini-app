@@ -1,7 +1,6 @@
 import { memo, useMemo } from 'react';
 import { classNames } from 'utils/Common.util';
 import { MessageError } from './ErrorMessage';
-// import cn from 'classnames';
 type IPropsInput = {
     label?: string;
     placeholder?: string;
@@ -39,7 +38,6 @@ export const FormInput = memo(function FormInput(props: IPropsInput) {
         ),
         [errorName]
     );
-    console.log(errorName, 'Zzz');
     const renderInput = useMemo(
         () => (
             <input
@@ -54,7 +52,6 @@ export const FormInput = memo(function FormInput(props: IPropsInput) {
         ),
         [errorName]
     );
-    console.log(errorName, 'zz');
     return (
         <div className={`w-full flex flex-col  mt-4 lg:mt-0 ${classnamesProp}`}>
             <label htmlFor={label} className="mb-2 text-black font-bold text-[18px]">

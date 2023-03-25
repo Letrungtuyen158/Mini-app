@@ -1,6 +1,6 @@
 import { images } from 'assets';
 import { debounce } from 'lodash';
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { classNames } from 'utils/Common.util';
 
 interface ISearchInputProps {

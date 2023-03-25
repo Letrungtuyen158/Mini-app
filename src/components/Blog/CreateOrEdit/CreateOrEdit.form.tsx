@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 import { showToastError, showToastSuccess } from 'utils/Toast.util';
 import { BlogActions } from 'store/Blog';
 import { useDispatch } from 'react-redux';
-import BtnSubmit from 'components/common/BtnSubmitForm';
+import { BtnSubmit } from 'components/common/BtnSubmitForm';
 
 interface ICreateOrEditBlogFormProps {
     blog?: IBlog;
@@ -92,7 +92,7 @@ const CreateOrEditBlogForm = ({ blog }: ICreateOrEditBlogFormProps) => {
                         isRequired
                     />
                 </div>
-                <BtnSubmit />
+                <BtnSubmit id={params?.id} />
             </form>
         </>
     );

@@ -17,7 +17,7 @@ export const defaultFilter = {
 };
 
 const BlogScreen = () => {
-    const filterRef: any = useRef(defaultFilter);
+    const filterRef = useRef<any>(defaultFilter);
     const dispatch = useDispatch();
     const stateBlogRedux = useSelector((state: RootState) => state);
     const getBlogList = useCallback((filter?: IFilterGetBlogList) => {
