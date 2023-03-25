@@ -3,13 +3,15 @@ import React, { memo, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { schema } from './CreateOrEdit.config';
 import { FormInput } from 'components/common';
-import { createBlogApi, editBlogApi } from 'services';
+import { createBlogApi, deleteBlogById, editBlogApi } from 'services';
 import { IBlog, IBlogForm, IFilterGetBlogList, ORDER } from 'interface/BlogApp';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { showToastError, showToastSuccess } from 'utils/Toast.util';
 import { BlogActions } from 'store/Blog';
 import { useDispatch } from 'react-redux';
 import { BtnSubmit } from 'components/common/BtnSubmitForm';
+import { messAlerFail, messAlerSuccess } from 'constants/api';
+import { ROUTERS } from 'constants/router';
 
 interface ICreateOrEditBlogFormProps {
     blog?: IBlog;
@@ -17,12 +19,13 @@ interface ICreateOrEditBlogFormProps {
 export const defaultFilter = {
     limit: 12,
     page: 1,
-    sortBy: ORDER.desc,
-    order: 'createdAt',
+    sortBy: 'createdAt',
+    order: ORDER.desc,
     search: ''
 };
 const CreateOrEditBlogForm = ({ blog }: ICreateOrEditBlogFormProps) => {
     const params = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const getBlogList = useCallback((filter: IFilterGetBlogList) => {
         dispatch(BlogActions.getBlogsRequest(filter));
@@ -49,13 +52,16 @@ const CreateOrEditBlogForm = ({ blog }: ICreateOrEditBlogFormProps) => {
                     ? await editBlogApi(data, String(params?.id))
                     : await createBlogApi(data);
                 if (res?.ok) {
-                    showToastSuccess(params?.id ? 'Edit success' : 'Create success');
-                    params?.id
-                        ? dispatch(BlogActions.getBlogsDetailRequest(Number(params?.id)))
-                        : getBlogList(defaultFilter);
-                    !params?.id && reset();
+                    if (params?.id) {
+                        showToastSuccess(messAlerSuccess.edit);
+                        dispatch(BlogActions.getBlogsDetailRequest(Number(params?.id)));
+                    } else {
+                        showToastSuccess(messAlerSuccess.create);
+                        getBlogList(defaultFilter);
+                        reset();
+                    }
                 } else {
-                    showToastError(params?.id ? 'Edit failure' : 'Create failure');
+                    showToastError(params?.id ? messAlerFail.edit : messAlerFail.create);
                 }
             } catch (error) {
                 showToastError();
@@ -63,6 +69,19 @@ const CreateOrEditBlogForm = ({ blog }: ICreateOrEditBlogFormProps) => {
         },
         [params?.id]
     );
+    const handleDeleteBlog = async () => {
+        try {
+            const res = await deleteBlogById(Number(params?.id));
+            if (res.ok) {
+                showToastSuccess(messAlerSuccess.delete);
+                navigate(ROUTERS.HOME);
+            } else {
+                showToastError(messAlerFail.delete);
+            }
+        } catch (error) {
+            showToastError();
+        }
+    };
     return (
         <>
             <form
@@ -92,7 +111,7 @@ const CreateOrEditBlogForm = ({ blog }: ICreateOrEditBlogFormProps) => {
                         isRequired
                     />
                 </div>
-                <BtnSubmit id={params?.id} />
+                <BtnSubmit id={params?.id} onDelete={handleDeleteBlog} />
             </form>
         </>
     );

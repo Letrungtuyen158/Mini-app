@@ -1,8 +1,8 @@
 export interface IFilterGetBlogList {
     limit?: number;
     page?: number;
-    sortBy?: ORDER;
-    order?: string;
+    sortBy?: string;
+    order?: ORDER;
     search?: string;
 }
 

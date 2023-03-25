@@ -19,7 +19,8 @@ const api = create({
 
 const getApiBlogList = (filter: IFilterGetBlogList) => api.get('/blogs', filter);
 const getApiBlogById = (id: number) => api.get(`/blogs/${id}`);
+const deleteBlogById = (id: number) => api.delete(`/blogs/${id}`);
 const createBlogApi = (data: IBlogForm) => api.post(`/blogs`, data);
 const editBlogApi = (data: IBlogForm, id: string) => api.put(`/blogs/${id}`, data);
 
-export { getApiBlogList, getApiBlogById, createBlogApi, editBlogApi };
+export { getApiBlogList, getApiBlogById, createBlogApi, editBlogApi, deleteBlogById };
