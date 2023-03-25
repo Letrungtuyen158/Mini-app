@@ -3,5 +3,5 @@ export const classNames = (...classes: any) => {
 };
 
 export const isImageLink = (link: string) => {
-    return typeof link === 'string' && link.startsWith('https');
+    return typeof link === 'string' && link.startsWith('https' || 'http');
 };
