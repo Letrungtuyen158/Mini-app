@@ -1,11 +1,16 @@
 import React from 'react';
+import { classNames } from 'utils/Common.util';
 
-const BtnSubmit = ({ id, onDelete }: any) => {
+const BtnSubmit = ({ id, onDelete, isSubmitting }: any) => {
     return (
         <div className="flex flex-col gap-4">
             <button
                 type="submit"
-                className="bg-gradient-to-r from-[#6bdbe3] via-[#588BFE] to-[#A334FF] w-full lg:w-[20%] h-[51px] rounded-xl mt-[31px] text-[18px] font-black btn capitalize transition-all">
+                disabled={isSubmitting}
+                className={classNames(
+                    'bg-gradient-to-r from-[#6bdbe3] via-[#588BFE] to-[#A334FF] w-full lg:w-[20%] h-[51px] rounded-xl mt-[31px] text-[18px] font-black btn capitalize transition-all',
+                    isSubmitting ? 'opacity-50' : 'opacity-100'
+                )}>
                 {id ? 'edit' : 'submit'}
             </button>
             {id && (

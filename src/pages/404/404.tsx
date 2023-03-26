@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
-const NoDataBlog = () => {
+const Notfound = () => {
     const navigate = useNavigate();
-    const reLoadPage = () => {
-        navigate(0);
+
+    const homePage = () => {
+        navigate('/');
     };
     return (
         <section className="dark:bg-gray-900">
@@ -18,8 +18,8 @@ const NoDataBlog = () => {
                         Sorry, we can&apos;t find that page. You&apos;ll find lots to explore on the
                         home page.
                     </p>
-                    <button onClick={reLoadPage} className="btn btn-primary">
-                        Reload Collection
+                    <button onClick={homePage} className="btn btn-primary">
+                        Back to Homepage
                     </button>
                 </div>
             </div>
@@ -27,4 +27,4 @@ const NoDataBlog = () => {
     );
 };
 
-export { NoDataBlog };
+export default Notfound;

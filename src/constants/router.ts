@@ -1,4 +1,5 @@
 export const ROUTERS = {
+    NOT_FOUND: '*',
     HOME: '/',
-    DETAIL_BLOG: '/:id'
+    DETAIL_BLOG: '/blog/:id'
 };

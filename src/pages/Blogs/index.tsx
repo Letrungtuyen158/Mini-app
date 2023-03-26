@@ -67,9 +67,9 @@ const BlogScreen = () => {
                 className="flex justify-center mb-10 mt-6"
                 itemsPerPage={defaultFilter.limit}
                 total={
-                    stateBlogRedux?.blog?.blogList?.length < 10
+                    stateBlogRedux?.blog?.blogList?.length < 12
                         ? stateBlogRedux?.blog?.blogList?.length
-                        : 100
+                        : 70
                 }
                 onchangePage={onchangePage}
             />
