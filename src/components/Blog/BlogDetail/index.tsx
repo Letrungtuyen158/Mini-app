@@ -30,7 +30,7 @@ const BlogDetail = () => {
                             <Images img={blog?.image} alt={blog?.title} className="h-[600px]" />
                             <div className="p-4 md:p-0">
                                 <h3 className="text-2xl font-bold my-5">{blog?.title}</h3>
-                                <p className="mb-10">{blog?.content}</p>
+                                <p className="mb-10 break-all">{blog?.content}</p>
                             </div>
                         </div>
                         <div className="flex-1 my-10 h-auto">

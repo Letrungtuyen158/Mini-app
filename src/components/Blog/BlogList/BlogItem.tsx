@@ -16,7 +16,7 @@ const BlogItem = ({ blog }: IBlogItemProps) => {
                 <Images img={image} alt={title} />
                 <div className="h-[120px] px-2 pb-2">
                     <h3 className="mb-1 text-xl font-medium line-clamp-2">{title}</h3>
-                    <p className="text-base font-normal line-clamp-2">{content}</p>
+                    <p className="text-base font-normal line-clamp-2 break-all">{content}</p>
                 </div>
             </div>
         </Link>
